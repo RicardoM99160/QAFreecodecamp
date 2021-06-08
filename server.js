@@ -8,6 +8,8 @@ const runner = require('./test-runner');
 const bodyParser = require('body-parser');
 app.use(bodyParser.json());
 
+const PORT = process.env.PORT || 3000
+
 app.get('/', function (req, res) {
   res.sendFile(__dirname + '/views/index.html');
 })
@@ -82,8 +84,8 @@ app.get('/_api/get-tests', cors(), function (req, res, next) {
   });
 
 
-app.listen(3000, function () {
-  console.log("Listening on port " + 3000);
+app.listen(PORT, function () {
+  console.log("Listening on port " + PORT);
   console.log('Running Tests...');
   setTimeout(function () {
     try {
